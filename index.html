@@ -2,16 +2,95 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- Favicon is now injected at runtime via imported image (see src/favicon.js) so it inlines into single-file build -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Traffyk AI</title>
-    <script type="module" crossorigin>(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))a(o);new MutationObserver(o=>{for(const i of o)if(i.type==="childList")for(const r of i.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&a(r)}).observe(document,{childList:!0,subtree:!0});function n(o){const i={};return o.integrity&&(i.integrity=o.integrity),o.referrerPolicy&&(i.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?i.credentials="include":o.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function a(o){if(o.ep)return;o.ep=!0;const i=n(o);fetch(o.href,i)}})();var Wr=typeof globalThis<"u"?globalThis:typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{};function Ee(e){return e&&e.__esModule&&Object.prototype.hasOwnProperty.call(e,"default")?e.default:e}var v5={exports:{}},z1={},b5={exports:{}},ue={};
-/**
- * @license React
- * react.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */var os=Symbol.for("react.element"),y9=Symbol.for("react.portal"),v9=Symbol.for("react.fragment"),b9=Symbol.for("react.strict_mode"),I9=Symbol.for("react.profiler"),w9=Symbol.for("react.provider"),E9=Symbol.for("react.context"),k9=Symbol.for("react.forward_ref"),C9=Symbol.for("react.suspense"),q9=Symbol.for("react.memo"),Q9=Symbol.for("react.lazy"),dm=Symbol.iterator;function B9(e){return e===null||typeof e!="object"?null:(e=dm&&e[dm]||e["@@iterator"],typeof e=="function"?e:null)}var I5={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},w5=Object.assign,E5={};function Di(e,t,n){this.props=e,this.context=t,this.refs=E5,this.updater=n||I5}Di.prototype.isReactComponent={};Di.prototype.setState=function(e,t){if(typeof e!="object"&&typeof e!="function"&&e!=null)throw Error("setState(...): takes an object of state variables to update or a function which returns an object of state variables.");this.updater.enqueueSetState(this,e,t,"setState")};Di.prototype.forceUpdate=function(e){this.updater.enqueueForceUpdate(this,e,"forceUpdate")};function k5(){}k5.prototype=Di.prototype;function d2(e,t,n){this.props=e,this.context=t,this.refs=E5,this.updater=n||I5}var c2=d2.prototype=new k5;c2.constructor=d2;w5(c2,Di.prototype);c2.isPureReactComponent=!0;var cm=Array.isArray,C5=Object.prototype.hasOwnProperty,m2={current:null},q5={key:!0,ref:!0,__self:!0,__source:!0};function Q5(e,t,n){var a,o={},i=null,r=null;if(t!=null)for(a in t.ref!==void 0&&(r=t.ref),t.key!==void 0&&(i=""+t.key),t)C5.call(t,a)&&!q5.hasOwnProperty(a)&&(o[a]=t[a]);var s=arguments.length-2;if(s===1)o.children=n;else if(1<s){for(var A=Array(s),l=0;l<s;l++)A[l]=arguments[l+2];o.children=A}if(e&&e.defaultProps)for(a in s=e.defaultProps,s)o[a]===void 0&&(o[a]=s[a]);return{$$typeof:os,type:e,key:i,ref:r,props:o,_owner:m2.current}}function x9(e,t){return{$$typeof:os,type:e.type,key:t,ref:e.ref,props:e.props,_owner:e._owner}}function g2(e){return typeof e=="object"&&e!==null&&e.$$typeof===os}function S9(e){var t={"=":"=0",":":"=2"};return"$"+e.replace(/[=:]/g,function(n){return t[n]})}var mm=/\/+/g;function Kl(e,t){return typeof e=="object"&&e!==null&&e.key!=null?S9(""+e.key):t.toString(36)}function Ns(e,t,n,a,o){var i=typeof e;(i==="undefined"||i==="boolean")&&(e=null);var r=!1;if(e===null)r=!0;else switch(i){case"string":case"number":r=!0;break;case"object":switch(e.$$typeof){case os:case y9:r=!0}}if(r)return r=e,o=o(r),e=a===""?"."+ […continued in the complete file…]
+    <title>Traffyk AI Dashboard</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        text-align: center;
+        max-width: 600px;
+        margin: 1rem;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+      }
+      .subtitle {
+        color: #666;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+      .feature-list {
+        text-align: left;
+        margin: 2rem 0;
+      }
+      .feature-list li {
+        margin: 0.5rem 0;
+        color: #444;
+      }
+      .status {
+        background: #e7f5e7;
+        color: #2d5a2d;
+        padding: 1rem;
+        border-radius: 5px;
+        margin: 1rem 0;
+        border-left: 4px solid #4caf50;
+      }
+      .note {
+        background: #fff3cd;
+        color: #856404;
+        padding: 1rem;
+        border-radius: 5px;
+        margin: 1rem 0;
+        border-left: 4px solid #ffc107;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 Traffyk AI</h1>
+      <div class="subtitle">Intelligent Analytics Dashboard</div>
+      
+      <div class="status">
+        ✅ Dashboard Successfully Deployed
+      </div>
+      
+      <div class="feature-list">
+        <h3>Features:</h3>
+        <ul>
+          <li>Real-time traffic analytics</li>
+          <li>AI-powered insights</li>
+          <li>Interactive data visualization</li>
+          <li>Responsive design</li>
+          <li>SEO optimized</li>
+        </ul>
+      </div>
+      
+      <div class="note">
+        <strong>Note:</strong> This is a placeholder page for the IAG Dashboard. 
+        The complete React application can be deployed by uploading the full build files 
+        to this GitHub Pages repository.
+      </div>
+      
+      <div style="margin-top: 2rem; color: #888; font-size: 0.9rem;">
+        Repository: <strong>iag-dashboard-2D9C4HJ6</strong><br>
+        Deployed via: <strong>GitHub Pages</strong>
+      </div>
+    </div>
+  </body>
+</html>
